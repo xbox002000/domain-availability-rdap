@@ -1,0 +1,15 @@
+{
+  "domains": [
+    "example.com",
+    "this-domain-definitely-not-registered-xyzzy-99999.com"
+  ],
+  "maxDomains": 10,
+  "useRdap": true,
+  "useDns": true,
+  "useWhois": true,
+  "maxConcurrency": 2,
+  "queryDelayMs": 100,
+  "requestTimeoutSecs": 20,
+  "writeMarkdownTable": true,
+  "chargeFailedDomains": false
+}

@@ -1,0 +1,92 @@
+{
+  "title": "Domain availability / RDAP batch input",
+  "description": "Paste domains (or URLs — the host is extracted). For each name the Actor returns available|registered|unknown using RDAP first, then optional DNS and WHOIS fallbacks. Positioning: batch availability verdicts for inventory — not spam or lead-gen.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "domains": {
+      "title": "Domains",
+      "type": "array",
+      "description": "One or more domains. Accepts plain strings (`example.com`), `{\"domain\": \"...\"}` objects, or `{\"url\": \"https://...\"}` (host is used). Deduplicated, order preserved.",
+      "editor": "stringList",
+      "prefill": [
+        "example.com",
+        "this-domain-definitely-not-registered-xyzzy-99999.com"
+      ],
+      "sectionCaption": "Input"
+    },
+    "maxDomains": {
+      "title": "Max domains",
+      "type": "integer",
+      "description": "Stop after checking this many unique domains (0 = no limit). Also caps cost.",
+      "default": 500,
+      "prefill": 50,
+      "minimum": 0,
+      "maximum": 100000,
+      "sectionCaption": "Limits"
+    },
+    "useRdap": {
+      "title": "Use RDAP",
+      "type": "boolean",
+      "description": "Query public RDAP (preferred). NotFound → available; object found → registered.",
+      "default": true,
+      "prefill": true,
+      "sectionCaption": "Methods"
+    },
+    "useDns": {
+      "title": "Use DNS fallback",
+      "type": "boolean",
+      "description": "If RDAP is inconclusive, use DNS: NXDOMAIN → available; NS/A answers → registered.",
+      "default": true,
+      "prefill": true
+    },
+    "useWhois": {
+      "title": "Use WHOIS fallback",
+      "type": "boolean",
+      "description": "If RDAP/DNS are inconclusive, query public WHOIS as a last resort.",
+      "default": true,
+      "prefill": true
+    },
+    "maxConcurrency": {
+      "title": "Max concurrency",
+      "type": "integer",
+      "description": "Parallel domain checks. Keep moderate (2–8) to stay polite to public RDAP/WHOIS.",
+      "default": 4,
+      "minimum": 1,
+      "maximum": 20,
+      "sectionCaption": "Politeness & robustness"
+    },
+    "queryDelayMs": {
+      "title": "Min delay between queries (ms)",
+      "type": "integer",
+      "description": "Global minimum milliseconds between starting RDAP/WHOIS queries. 0 = no extra delay.",
+      "default": 100,
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "requestTimeoutSecs": {
+      "title": "Per-domain timeout (seconds)",
+      "type": "integer",
+      "description": "Timeout budget for RDAP + DNS + WHOIS attempts on one domain.",
+      "default": 20,
+      "minimum": 5,
+      "maximum": 90
+    },
+    "writeMarkdownTable": {
+      "title": "Write Markdown table (KV)",
+      "type": "boolean",
+      "description": "Also write a simple Markdown table to key-value store record TABLE.md.",
+      "default": false,
+      "prefill": false,
+      "sectionCaption": "Output"
+    },
+    "chargeFailedDomains": {
+      "title": "Charge unknown/failed domains",
+      "type": "boolean",
+      "description": "When off (default), only available|registered verdicts are charged. Unknown/error rows are saved free. When on, every attempted domain is charged once.",
+      "default": false,
+      "sectionCaption": "Pricing behaviour",
+      "prefill": false
+    }
+  }
+}

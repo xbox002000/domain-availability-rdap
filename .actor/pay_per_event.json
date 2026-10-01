@@ -1,0 +1,13 @@
+{
+    "apify-actor-start": {
+        "eventTitle": "Actor start",
+        "eventDescription": "Charged once per run (Apify synthetic start event; priced per GB of run memory, 1 GB minimum). Target ~$0.001 for a typical 256 MB–1 GB start.",
+        "eventPriceUsd": 0.001
+    },
+    "domain-verdict": {
+        "eventTitle": "Domain availability verdict",
+        "eventDescription": "Charged once per domain that received a clear verdict (available or registered). Unknown/error rows are free unless chargeFailedDomains is enabled. Invalid inputs that never become a row are not charged.",
+        "eventPriceUsd": 0.0012,
+        "isPrimaryEvent": true
+    }
+}

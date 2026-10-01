@@ -1,0 +1,32 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Availability overview",
+            "transformation": {
+                "fields": [
+                    "domain",
+                    "verdict",
+                    "method",
+                    "registrar",
+                    "status",
+                    "errors",
+                    "durationMs"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "domain": { "label": "Domain", "format": "text" },
+                    "verdict": { "label": "Verdict", "format": "text" },
+                    "method": { "label": "Method", "format": "text" },
+                    "registrar": { "label": "Registrar", "format": "text" },
+                    "status": { "label": "Status", "format": "text" },
+                    "errors": { "label": "Errors", "format": "text" },
+                    "durationMs": { "label": "ms", "format": "number" }
+                }
+            }
+        }
+    }
+}

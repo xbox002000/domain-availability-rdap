@@ -1,0 +1,31 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Domain availability / RDAP output",
+    "description": "One dataset item per domain (verdict + method + registrar), plus SUMMARY/OUTPUT JSON and optional TABLE.md in the default key-value store.",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Availability results",
+            "description": "Default dataset items, one per domain: domain, verdict (available|registered|unknown), method (RDAP|DNS|WHOIS), registrar, status, errors, durationMs. Views: overview.",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+        },
+        "summary": {
+            "type": "string",
+            "title": "SUMMARY report",
+            "description": "Key-value store record SUMMARY (JSON): counts by verdict, charged, durationSecs, peakMemoryMb.",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/SUMMARY"
+        },
+        "output": {
+            "type": "string",
+            "title": "Run summary (OUTPUT)",
+            "description": "Key-value store record OUTPUT (JSON): same run summary as SUMMARY plus charged event counts.",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+        },
+        "table": {
+            "type": "string",
+            "title": "Markdown table (optional)",
+            "description": "Key-value store record TABLE.md when writeMarkdownTable is enabled.",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/TABLE.md"
+        }
+    }
+}

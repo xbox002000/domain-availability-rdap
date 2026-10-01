@@ -1,0 +1,11 @@
+{
+  "domains": [
+    "example.com",
+    "not a domain!!!",
+    "this-domain-definitely-not-registered-xyzzy-99999.com"
+  ],
+  "maxDomains": 10,
+  "maxConcurrency": 2,
+  "writeMarkdownTable": false,
+  "chargeFailedDomains": false
+}
