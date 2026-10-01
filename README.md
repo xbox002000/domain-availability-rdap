@@ -129,4 +129,4 @@ for item in client.dataset(run["defaultDatasetId"]).iterate_items():
 
 ## License & source code
 
-This Actor is open source under the **GNU Affero General Public License v3.0 (AGPL-3.0)** — see `LICENSE`. Runtime deps: asyncwhois/whodap (MIT), dnspython (ISC). Public GitHub link will be added when the repository is pushed.
+This Actor is open source under the **GNU Affero General Public License v3.0 (AGPL-3.0)** — see `LICENSE`. Runtime deps: asyncwhois/whodap (MIT), dnspython (ISC). The full source code is public: https://github.com/xbox002000/domain-availability-rdap
